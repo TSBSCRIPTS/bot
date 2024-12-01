@@ -10,7 +10,7 @@ const client = new Client({
 });
 
 // Bot token from Railway environment variables
-const TOKEN = process.env.OTQ5NDY1OTgyMDQ3NDk0MTQ1.GoF61f.xtiPWVfvJc3CdOT5GMx_vQQ02ikvgtmSOvuR5Y;  // Correct reference to environment variable
+const TOKEN = process.env.DISCORD_TOKEN;  // Correct reference to environment variable
 
 if (!TOKEN) {
   console.error("Error: DISCORD_TOKEN is not set!");
