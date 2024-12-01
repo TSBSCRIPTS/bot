@@ -1,10 +1,21 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 
 // Create a new Discord client
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
+    ]
+});
 
 // Bot token from Railway environment variables
-const TOKEN = process.env.OTQ5NDY1OTgyMDQ3NDk0MTQ1.GJWwhJ.p5yXDVdI-Un7Ppjv3prJEH_E5Zhz2l7xmDDliA;
+const TOKEN = process.env.OTQ5NDY1OTgyMDQ3NDk0MTQ1.GoF61f.xtiPWVfvJc3CdOT5GMx_vQQ02ikvgtmSOvuR5Y;  // Correct reference to environment variable
+
+if (!TOKEN) {
+  console.error("Error: DISCORD_TOKEN is not set!");
+  process.exit(1);  // Exit if the token is not found
+}
 
 // Bot is ready
 client.once('ready', () => {
@@ -21,4 +32,6 @@ client.on('messageCreate', (message) => {
 });
 
 // Log in the bot
-client.login(TOKEN);
+client.login(TOKEN).catch(err => {
+    console.error('Error logging in: ', err);
+});
